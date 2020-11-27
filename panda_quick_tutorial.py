@@ -1,39 +1,85 @@
-import numpy as np 
+import numpy as np
 import pandas as pd
 
+# Create and populate a 5x2 NumPy array.
+my_data = np.array([[0, 3], [10, 7], [20, 9], [30, 14], [40, 15]])
 
-# numpy tutorial
+# Create a Python list that holds the names of the two columns.
+my_column_names = ['temperature', 'activity']
 
-one_dimensional_array = np.array([1.2, 2.4, 3.5, 4.7, 6.1, 7.2, 8.3, 9.5])
-print(one_dimensional_array)
+# Create a DataFrame.
+my_dataframe = pd.DataFrame(data=my_data, columns=my_column_names)
 
-two_dimensional_array = np.array([[6, 5], [11, 7], [4, 8]])
-print(two_dimensional_array)
+# Print the entire DataFrame
+print(my_dataframe)
 
-sequence_of_integers = np.arange(5, 12)
-print(sequence_of_integers)
+# Create a new column named adjusted.
+my_dataframe["adjusted"] = my_dataframe["activity"] + 2
 
-random_integers_between_50_and_100 = np.random.randint(low=50, high=101, size=(6))
-print(random_integers_between_50_and_100)
+# Print the entire DataFrame
+print(my_dataframe)
 
-random_floats_between_0_and_1 = np.random.random([6])
-print(random_floats_between_0_and_1)
+print("Rows #0, #1, and #2:")
+print(my_dataframe.head(3), '\n')
 
-random_floats_between_2_and_3 = random_floats_between_0_and_1 + 2.0
-print(random_floats_between_2_and_3)
+print("Row #2:")
+print(my_dataframe.iloc[[2]], '\n')
 
-random_integers_between_150_and_300 = random_integers_between_50_and_100 * 3
-print(random_integers_between_150_and_300)
+print("Rows #1, #2, and #3:")
+print(my_dataframe[1:4], '\n')
 
-#@title Double-click to see a possible solution to Task 1.
-feature = np.arange(6, 21)
-print(feature)
-label = (feature * 3) + 4
-print(label)
+print("Column 'temperature':")
+print(my_dataframe['temperature'])
 
-#@title Double-click to see a possible solution to Task 2.
+# @title Double-click for a solution to Task 1.
 
-noise = (np.random.random([15]) * 4) - 2
-print(noise)
-label = label + noise 
-print(label)
+# Create a Python list that holds the names of the four columns.
+my_column_names = ['Eleanor', 'Chidi', 'Tahani', 'Jason']
+
+# Create a 3x4 numpy array, each cell populated with a random integer.
+my_data = np.random.randint(low=0, high=101, size=(3, 4))
+
+# Create a DataFrame.
+df = pd.DataFrame(data=my_data, columns=my_column_names)
+
+# Print the entire DataFrame
+print(df)
+
+# Print the value in row #1 of the Eleanor column.
+print("\nSecond row of the Eleanor column: %d\n" % df['Eleanor'][1])
+
+# Create a column named Janet whose contents are the sum
+# of two other columns.
+df['Janet'] = df['Tahani'] + df['Jason']
+
+# Print the enhanced DataFrame
+print(df)
+
+# Create a reference by assigning my_dataframe to a new variable.
+print("Experiment with a reference:")
+reference_to_df = df
+
+# Print the starting value of a particular cell.
+print("  Starting value of df: %d" % df['Jason'][1])
+print("  Starting value of reference_to_df: %d\n" %
+      reference_to_df['Jason'][1])
+
+# Modify a cell in df.
+df.at[1, 'Jason'] = df['Jason'][1] + 5
+print("  Updated df: %d" % df['Jason'][1])
+print("  Updated reference_to_df: %d\n\n" % reference_to_df['Jason'][1])
+
+# Create a true copy of my_dataframe
+print("Experiment with a true copy:")
+copy_of_my_dataframe = my_dataframe.copy()
+
+# Print the starting value of a particular cell.
+print("  Starting value of my_dataframe: %d" % my_dataframe['activity'][1])
+print("  Starting value of copy_of_my_dataframe: %d\n" %
+      copy_of_my_dataframe['activity'][1])
+
+# Modify a cell in df.
+my_dataframe.at[1, 'activity'] = my_dataframe['activity'][1] + 3
+print("  Updated my_dataframe: %d" % my_dataframe['activity'][1])
+print("  copy_of_my_dataframe does not get updated: %d" %
+      copy_of_my_dataframe['activity'][1])
