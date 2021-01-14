@@ -22,12 +22,12 @@ test_df = pd.read_csv("./data/california_housing_test.csv")
 # Calculate the Z-scores of each column in the training set:
 train_df_mean = train_df.mean()
 train_df_std = train_df.std()
-train_df_norm = (train_df - train_df_mean)/train_df_std
+train_df_norm = (train_df - train_df_mean) / train_df_std
 
 # Calculate the Z-scores of each column in the test set.
 test_df_mean = test_df.mean()
 test_df_std = test_df.std()
-test_df_norm = (test_df - test_df_mean)/test_df_std
+test_df_norm = (test_df - test_df_mean) / test_df_std
 
 print("Normalized the values.")
 
@@ -74,6 +74,7 @@ feature_columns.append(population)
 # the model.
 my_feature_layer = tf.keras.layers.DenseFeatures(feature_columns)
 
+
 # @title Define the plotting function.
 
 
@@ -86,11 +87,12 @@ def plot_the_loss_curve(epochs, mse):
 
     plt.plot(epochs, mse, label="Loss")
     plt.legend()
-    plt.ylim([mse.min()*0.95, mse.max() * 1.03])
+    plt.ylim([mse.min() * 0.95, mse.max() * 1.03])
     plt.show()
 
 
 print("Defined the plot_the_loss_curve function.")
+
 
 # @title Define functions to create and train a linear regression model
 
@@ -234,6 +236,7 @@ test_label = np.array(test_features.pop(label_name))  # isolate the label
 print("\n Evaluate the new model against the test set:")
 my_model.evaluate(x=test_features, y=test_label, batch_size=batch_size)
 
+
 # @title Double-click to view a possible answer
 
 # Assuming that the linear model converged and
@@ -312,6 +315,7 @@ def create_model(my_learning_rate, my_feature_layer):
                   metrics=[tf.keras.metrics.MeanSquaredError()])
 
     return model
+
 
 # Call the new create_model function and the other (unchanged) functions.
 

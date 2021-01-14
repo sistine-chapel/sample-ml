@@ -48,6 +48,7 @@ feature_columns.append(longitude)
 # part of the model. Understanding layers is not important right now.
 fp_feature_layer = layers.DenseFeatures(feature_columns)
 
+
 # @title Define functions to create and train a model, and a plotting function
 
 
@@ -97,7 +98,7 @@ def plot_the_loss_curve(epochs, rmse):
 
     plt.plot(epochs, rmse, label="Loss")
     plt.legend()
-    plt.ylim([rmse.min()*0.94, rmse.max() * 1.05])
+    plt.ylim([rmse.min() * 0.94, rmse.max() * 1.05])
     plt.show()
 
 
