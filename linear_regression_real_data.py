@@ -20,6 +20,7 @@ training_df.head()
 # Get statistics on the dataset.
 training_df.describe()
 
+
 # @title Define the functions that build and train a model
 
 
@@ -72,6 +73,7 @@ def train_model(model, df, feature, label, epochs, batch_size):
 
 print("Defined the create_model and traing_model functions.")
 
+
 # @title Define the plotting functions
 
 
@@ -107,7 +109,7 @@ def plot_the_loss_curve(epochs, rmse):
 
     plt.plot(epochs, rmse, label="Loss")
     plt.legend()
-    plt.ylim([rmse.min()*0.97, rmse.max()])
+    plt.ylim([rmse.min() * 0.97, rmse.max()])
     plt.show()
 
 
@@ -164,7 +166,7 @@ predict_house_values(10, my_feature, my_label)
 
 # Define a synthetic feature
 training_df["rooms_per_person"] = training_df["total_rooms"] / \
-    training_df["population"]
+                                  training_df["population"]
 my_feature = "rooms_per_person"
 
 # Tune the hyperparameters.

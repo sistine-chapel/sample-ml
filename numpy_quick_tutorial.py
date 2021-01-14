@@ -1,4 +1,4 @@
-import numpy as np 
+import numpy as np
 
 one_dimensional_array = np.array([1.2, 2.4, 3.5, 4.7, 6.1, 7.2, 8.3, 9.5])
 print(one_dimensional_array)
@@ -21,15 +21,15 @@ print(random_floats_between_2_and_3)
 random_integers_between_150_and_300 = random_integers_between_50_and_100 * 3
 print(random_integers_between_150_and_300)
 
-#@title Double-click to see a possible solution to Task 1.
+# @title Double-click to see a possible solution to Task 1.
 feature = np.arange(6, 21)
 print(feature)
 label = (feature * 3) + 4
 print(label)
 
-#@title Double-click to see a possible solution to Task 2.
+# @title Double-click to see a possible solution to Task 2.
 
 noise = (np.random.random([15]) * 4) - 2
 print(noise)
-label = label + noise 
+label = label + noise
 print(label)
